@@ -45,6 +45,8 @@ function SignOut() {
 }
 
 function ChatRoom() {
+  // helps with scrolling messages
+  const dummy = useRef();
   //refere firestore collection
   const messagesRef = firestore.collection("messages");
   const query = messagesRef.orderBy("createdAt").limit(10);
@@ -69,14 +71,17 @@ function ChatRoom() {
     });
 
     setFormValue("");
+
+    dummy.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <div>
-      <div>
+      <main>
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
-      </div>
+        <div ref={dummy}></div>
+      </main>
       <form onSubmit={sendMessage}>
         <input
           value={formValue}
