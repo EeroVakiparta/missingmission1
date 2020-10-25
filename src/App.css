@@ -1,5 +1,5 @@
 body {
-  background-color: #282c34;
+  background-color: #f8cbf6;
 }
 
 .App {
@@ -9,10 +9,10 @@ body {
 }
 
 .App header {
-  background-color: #181717;
+  background-color: #ec7dba;
   height: 10vh;
   min-height: 50px;
-  color: white;
+  color: rgb(161, 7, 115);
   position: fixed;
   width: 100%;
   max-width: 728px;
@@ -34,6 +34,7 @@ body {
 }
 
 main {
+  background-color: #fd9ef8;
   padding: 10px;
   height: 80vh;
   margin: 10vh 0 10vh;
@@ -47,18 +48,18 @@ main::-webkit-scrollbar {
 }
 
 main::-webkit-scrollbar-track {
-  background: #1e1e24;
+  background: #b4358e;
 }
 
 main::-webkit-scrollbar-thumb {
-  background: #6649b8;
+  background: #8b1f62;
 }
 
 form {
   height: 10vh;
   position: fixed;
   bottom: 0;
-  background-color: rgb(24, 23, 23);
+  background-color: rgb(131, 15, 63);
   width: 100%;
   max-width: 728px;
   display: flex;
@@ -67,14 +68,14 @@ form {
 
 form button {
   width: 20%;
-  background-color: rgb(56, 56, 143);
+  background-color: rgb(255, 0, 43);
 }
 
 input {
   line-height: 1.5;
   width: 100%;
   font-size: 1.5rem;
-  background: rgb(58, 58, 58);
+  background: rgb(78, 78, 78);
   color: white;
   outline: none;
   border: none;
@@ -82,7 +83,7 @@ input {
 }
 
 button {
-  background-color: #282c34; /* Green */
+  background-color: #fa0202; /* Green */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -99,7 +100,7 @@ button:disabled {
 }
 
 .sign-in {
-  color: #282c34;
+  color: #c05889;
   background: white;
   max-width: 400px;
   margin: 0 auto;
@@ -133,7 +134,7 @@ p {
 
 .sent p {
   color: white;
-  background: #0b93f6;
+  background: #ee4ef3;
   align-self: flex-end;
 }
 .received p {
