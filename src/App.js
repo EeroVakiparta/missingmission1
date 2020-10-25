@@ -18,12 +18,16 @@ const analytics = firebase.analytics();
 
 // user is an object when signed in and out = null
 // Logged in show chat logged out show sign in
-const [user] = useAuthState(auth);
 
 function App() {
+  const [user] = useAuthState(auth);
   return (
     <div className="App">
-      <header></header>
+      <header>
+        <h1>MissingMission1</h1>
+        <SignOut />
+      </header>
+
       <section>{user ? <ChatRoom /> : <SignIn />}</section>
     </div>
   );
@@ -32,15 +36,25 @@ function App() {
 function SignIn() {
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-
     auth.signInWithPopup(provider);
   };
-  return <button onClick={signInWithGoogle}>Sign in with GOOGLE</button>;
+
+  return (
+    <>
+      <button className="sign-in" onClick={signInWithGoogle}>
+        Sign in with Google
+      </button>
+    </>
+  );
 }
 
 function SignOut() {
   return (
-    auth.currentUser && <button onClick={() => auth.signOut()}>Sign Out</button>
+    auth.currentUser && (
+      <button className="sign-out" onClick={() => auth.signOut()}>
+        Sign Out
+      </button>
+    )
   );
 }
 
@@ -69,38 +83,46 @@ function ChatRoom() {
       uid,
       photoURL,
     });
-
     setFormValue("");
-
     dummy.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <div>
+    <>
       <main>
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
-        <div ref={dummy}></div>
+
+        <span ref={dummy}></span>
       </main>
+
       <form onSubmit={sendMessage}>
         <input
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
-        ></input>
-        <button type="submit">KISS</button>
+          placeholder="say something nice"
+        />
+
+        <button type="submit" disabled={!formValue}>
+          MISS ❤️
+        </button>
       </form>
-    </div>
+    </>
   );
 }
 
 function ChatMessage(props) {
   const { text, uid, photoURL } = props.message;
+
   const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
+
   return (
-    <div className={`message ${messageClass}`}>
-      <img src={photoURL} />
-      <p>{test}</p>
-    </div>
+    <>
+      <div className={`message ${messageClass}`}>
+        <img src={photoURL} />
+        <p>{text}</p>
+      </div>
+    </>
   );
 }
 
