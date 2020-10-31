@@ -63,7 +63,7 @@ function ChatRoom() {
   const dummy = useRef();
   //refere firestore collection
   const messagesRef = firestore.collection("messages");
-  const query = messagesRef.orderBy("createdAt").limit(10);
+  const query = messagesRef.orderBy("createdAt", "desc").limit(30);
 
   //listen data with hook
   const [messages] = useCollectionData(query, { idField: "id" });
@@ -91,7 +91,10 @@ function ChatRoom() {
     <>
       <main>
         {messages &&
-          messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
+          messages
+            .slice(0)
+            .reverse()
+            .map((msg) => <ChatMessage key={msg.id} message={msg} />)}
 
         <span ref={dummy}></span>
       </main>
@@ -119,7 +122,7 @@ function ChatMessage(props) {
   return (
     <>
       <div className={`message ${messageClass}`}>
-        <img src={photoURL} />
+        <img alt="moi" src={photoURL} />
         <p>{text}</p>
       </div>
     </>
