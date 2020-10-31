@@ -30,7 +30,7 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
-  background-color: rgb(40, 37, 53);
+  background-color: #ec7dba;
 }
 
 main {
@@ -68,25 +68,34 @@ form {
 
 form button {
   width: 20%;
-  background-color: rgb(255, 0, 43);
+  padding: 1px 1px;
+  font-size: 2.9rem;
+  text-shadow: 2px 2px #000000;
+  background-color: #ec7dba;
 }
 
 input {
   line-height: 1.5;
   width: 100%;
-  font-size: 1.5rem;
-  background: rgb(78, 78, 78);
+  font-size: 1.9rem;
+  background-color: #ec7dba;
   color: white;
   outline: none;
   border: none;
   padding: 0 10px;
 }
 
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(255, 255, 255);
+  opacity: 1; /* Firefox */
+}
+
 button {
-  background-color: #fa0202; /* Green */
+  background-color: #fa0202;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 4px 4px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -103,7 +112,18 @@ button:disabled {
   color: #c05889;
   background: white;
   max-width: 400px;
+  padding: 17px 17px;
   margin: 0 auto;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0.5px 0.5px 0px 1px rgba(0, 0, 0, 0.3);
+}
+
+.sign-out {
+  color: #c05889;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0.5px 0.5px 0px 1px rgba(0, 0, 0, 0.3);
 }
 
 ul,

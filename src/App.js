@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>MissingMission1</h1>
+        <h1>Missing Mission</h1>
         <SignOut />
       </header>
 
@@ -52,7 +52,7 @@ function SignOut() {
   return (
     auth.currentUser && (
       <button className="sign-out" onClick={() => auth.signOut()}>
-        Sign Out
+        SignOut
       </button>
     )
   );
@@ -60,10 +60,11 @@ function SignOut() {
 
 function ChatRoom() {
   // helps with scrolling messages
+  // TODO: scroll at start of app
   const dummy = useRef();
   //refere firestore collection
   const messagesRef = firestore.collection("messages");
-  const query = messagesRef.orderBy("createdAt", "desc").limit(30);
+  const query = messagesRef.orderBy("createdAt", "desc").limit(10);
 
   //listen data with hook
   const [messages] = useCollectionData(query, { idField: "id" });
@@ -103,11 +104,11 @@ function ChatRoom() {
         <input
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
-          placeholder="say something nice"
+          placeholder="say something nice..."
         />
 
         <button type="submit" disabled={!formValue}>
-          MISS ❤️
+          ❤️
         </button>
       </form>
     </>
