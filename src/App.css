@@ -1,5 +1,25 @@
+:root {
+  --cc-zink-yellow: #FEDB00;
+  --cc-rich-black: #000000;
+  --cc-light-blue: #00AFD7;
+  --cc-light-green: #00C7B1;
+  --cc-heather-violet: #E0457B;
+
+  --cc-pure-orange: #FF6642;
+  --cc-tele-magneta: #FF516D;
+  --cc-powder-pink: #F986B1;
+
+  --cc-luminous-green: #35C46F;
+  --cc-sulfur-yellow: #BFE400;
+  --cc-sprout-green: #9EE09F;
+  --cc-sky-blue: #8CCAE0;
+
+  --cc-white-white: #FFFFFF;
+
+}
+
 body {
-  background-color: #f8cbf6;
+  background-color: var(--cc-yellow);
 }
 
 .App {
@@ -9,10 +29,10 @@ body {
 }
 
 .App header {
-  background-color: #ec7dba;
+  background-color: #FEDB00; 
   height: 10vh;
   min-height: 50px;
-  color: rgb(161, 7, 115);
+  color: var(--cc-rich-black);
   position: fixed;
   width: 100%;
   max-width: 728px;
@@ -30,11 +50,11 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
-  background-color: #ec7dba;
+  background-color: #FEDB00;
 }
 
 main {
-  background-color: #fd9ef8;
+  background-color: var(--cc-sky-blue);
   padding: 10px;
   height: 80vh;
   margin: 10vh 0 10vh;
@@ -48,18 +68,18 @@ main::-webkit-scrollbar {
 }
 
 main::-webkit-scrollbar-track {
-  background: #b4358e;
+  background: #FEDB00;
 }
 
 main::-webkit-scrollbar-thumb {
-  background: #8b1f62;
+  background: #FEDB00;
 }
 
 form {
   height: 10vh;
   position: fixed;
   bottom: 0;
-  background-color: rgb(131, 15, 63);
+  background-color: var(--cc-rich-black);
   width: 100%;
   max-width: 728px;
   display: flex;
@@ -71,14 +91,14 @@ form button {
   padding: 1px 1px;
   font-size: 2.9rem;
   text-shadow: 2px 2px #000000;
-  background-color: #ec7dba;
+  background-color: #FEDB00;
 }
 
 input {
   line-height: 1.5;
   width: 100%;
   font-size: 1.9rem;
-  background-color: #ec7dba;
+  background-color: #FEDB00;
   color: white;
   outline: none;
   border: none;
@@ -92,9 +112,9 @@ input {
 }
 
 button {
-  background-color: #fa0202;
+  background-color: var(--cc-yellow-black);
   border: none;
-  color: white;
+  color: var(--cc-sky-blue);
   padding: 4px 4px;
   text-align: center;
   text-decoration: none;
@@ -104,13 +124,13 @@ button {
 }
 
 button:disabled {
-  opacity: 0.5;
+  opacity: 0.9;
   cursor: not-allowed;
 }
 
 .sign-in {
-  color: #c05889;
-  background: white;
+  color: var(--cc-rich-black);
+  background: var(--cc-sulfur-yellow);
   max-width: 400px;
   padding: 17px 17px;
   margin: 0 auto;
@@ -120,8 +140,8 @@ button:disabled {
 }
 
 .sign-out {
-  color: #c05889;
-  background: white;
+  color: var(--cc-rich-black);
+  background: var(--cc-sprout-green);
   border-radius: 10px;
   box-shadow: 0.5px 0.5px 0px 1px rgba(0, 0, 0, 0.3);
 }
@@ -139,7 +159,7 @@ p {
   padding: 10px 20px;
   border-radius: 25px;
   position: relative;
-  color: white;
+  color: var(--cc-rich-black);
   text-align: center;
 }
 
@@ -153,13 +173,13 @@ p {
 }
 
 .sent p {
-  color: white;
-  background: #ee4ef3;
+  color: var(--cc-rich-black);
+  background: #FEDB00;
   align-self: flex-end;
 }
 .received p {
-  background: #e5e5ea;
-  color: black;
+  background: var(--cc-light-blue);
+  color: var(--cc-rich-black);
 }
 
 img {

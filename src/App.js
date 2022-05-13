@@ -8,20 +8,14 @@ import "firebase/analytics";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
+import { initializeApp } from 'firebase/app';
+const firebaseConfig = {
 
-firebase.initializeApp({
-  apiKey: "AIzaSyA9luUrEUOlkqMY5sMWDB-JkSZTYEpU1Lw",
-  authDomain: "ccchat-ea8a0.firebaseapp.com",
-  projectId: "ccchat-ea8a0",
-  storageBucket: "ccchat-ea8a0.appspot.com",
-  messagingSenderId: "875358450845",
-  appId: "1:875358450845:web:2f1cc94f07f17bb43a9074",
-  measurementId: "G-196CG0S2G2"
-});
-
+};
+const app = initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const firestore = firebase.firestore();
-const analytics = firebase.analytics();
+//const analytics = firebase.analytics();
 
 // user is an object when signed in and out = null
 // Logged in show chat logged out show sign in
@@ -31,7 +25,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Missing Mission</h1>
+        <h1>CC Chat</h1>
         <SignOut />
       </header>
 
@@ -43,13 +37,34 @@ function App() {
 function SignIn() {
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider);
+    auth.signInWithPopup(provider)
+    .catch((error) => alert(error.message));
+  };
+
+  const signInWithErkka = () => {
+    firebase.auth().signInAnonymously()
+    .then(() => {
+    // Signed in..
+    //console.log("erkka loggas prkl, erkan implementointi kesti 5x kauemmi ku koko muu koodi.");
+  })
+  .catch((error) => {
+    // eslint-disable-next-line
+    var errorCode = error.code;
+    // eslint-disable-next-line
+    var errorMessage = error.message;
+  });
+    
+
   };
 
   return (
     <>
       <button className="sign-in" onClick={signInWithGoogle}>
         Sign in with Google
+      </button>
+      <br></br>
+      <button className="sign-in" onClick={signInWithErkka}>
+        Olen Erkka
       </button>
     </>
   );
@@ -61,8 +76,7 @@ function SignOut() {
       <button className="sign-out" onClick={() => auth.signOut()}>
         SignOut
       </button>
-    )
-  );
+    )  );
 }
 
 function ChatRoom() {
@@ -111,11 +125,11 @@ function ChatRoom() {
         <input
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
-          placeholder="say something nice..."
+          placeholder="write here..."
         />
 
         <button type="submit" disabled={!formValue}>
-          ❤️
+        🐑
         </button>
       </form>
     </>
@@ -124,13 +138,22 @@ function ChatRoom() {
 
 function ChatMessage(props) {
   const { text, uid, photoURL } = props.message;
-
+  const erkkaUrl = "https://i.ibb.co/W6scTkn/elmjolk-removebg-preview.png";
   const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
+  //console.log(photoURL);
+  let chatImage;
+  if(auth.currentUser.isAnonymous) {
+    //console.log("erkka loggas prkl, erkan implementointi kesti 5x kauemmi ku koko muu koodi.");
+    chatImage = erkkaUrl;
+  }else{
+    // eslint-disable-next-line
+    chatImage = photoURL;
+  }
 
   return (
     <>
       <div className={`message ${messageClass}`}>
-        <img alt="moi" src={photoURL} />
+        <img alt="Erkka" src={chatImage} />
         <p>{text}</p>
       </div>
     </>
